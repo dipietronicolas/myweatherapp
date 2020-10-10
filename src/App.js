@@ -14,13 +14,16 @@ class App extends React.Component {
   }
   /* [3433955, 3432043, 3430863] bsas la plata mardel */
   fetchCityData = (city_code) => {
-    this.setState({
-      city_code: city_code,
-      show_container: true
-    }, () => {
-      this.boxIncrease();
-
-    })
+    if(this.state.box_amount.indexOf(city_code) === -1){
+      this.setState({
+        city_code: city_code,
+        show_container: true
+      }, () => {
+        this.boxIncrease();
+  
+      })
+    }
+    
   }
 
   boxIncrease = () => {

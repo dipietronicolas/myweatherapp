@@ -1,3 +1,6 @@
+#delete-button{
+  border-radius: 5%;
+}
 #box{
     height: 60vh;
     width: 14rem;
@@ -12,4 +15,9 @@
     #box{
       width: 15rem;
     }
+}
+@media (max-height: 450px){
+  #box{
+    min-height: 20rem;
+  }
 }

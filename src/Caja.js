@@ -45,8 +45,8 @@ export default class Caja extends React.Component {
 
   fillCardBody = () => {
     return (
-      <div className="card text-dark bg-light mx-auto my-3 p-4" id="box">
-        <div className="card-body p-0">
+      <div className="card text-dark bg-light mx-auto my-3 pt-4" id="box">
+        <div className="card-body p-0 mx-3">
           <h4 className="card-title">{this.state.data.name}</h4>
           <h5 className="card-subtitle font-weight-bold mb-2">{this.state.data.weather[0].description}</h5>
           <p className="py-0 my-0">Temp: {parseInt(this.state.data.main.temp)}º</p>
@@ -55,8 +55,9 @@ export default class Caja extends React.Component {
           <p className="py-0 my-0">Humidity: {parseInt(this.state.data.main.humidity)}%</p>
           <p className="py-0 my-0">Pressure: {parseInt(this.state.data.main.pressure)}hPa</p>
         </div>
-        <div className="card-footer mb-0">
+        <div className="card-footer mb-0 d-flex justify-content-center">
           <button
+            id="delete-button"
             className="btn btn-danger"
             onClick={this.handleRemove}>DELETE ME!</button>
         </div>
@@ -71,7 +72,7 @@ export default class Caja extends React.Component {
 
   render() {
     return (
-      <div className="col-12 col-sm-6 col-lg-4 col-xl-3 mx-auto mb-4 p-0">
+      <div className="d-flex justify-content-around col-12 col-sm-6 col-lg-4 mx-auto mb-4 py-0 px-3">
         {
           this.state.showData
             ? this.fillCardBody()
