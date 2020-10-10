@@ -1,0 +1,15 @@
+#box{
+    height: 60vh;
+    width: 14rem;
+    border-radius: 5%;
+}
+@media (max-width: 450px){
+    #box{
+      width: 18rem;
+    }
+}
+@media (max-width: 1000px){
+    #box{
+      width: 15rem;
+    }
+}
