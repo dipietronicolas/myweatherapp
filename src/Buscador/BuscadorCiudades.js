@@ -52,7 +52,7 @@ export const BuscadorCiudades = (props) => {
         if (nombre.indexOf(search_item) !== -1) {
           results.push(city);
         }
-        if (results.length > 5) {
+        if (results.length > 8) {
           break;
         }
       }
@@ -66,7 +66,7 @@ export const BuscadorCiudades = (props) => {
 
   return (
     <div className="col-6 col-md-6" id='search_city_form' >
-      <h5 className="my-3">Busque alguna ciudad:</h5>
+      <h5 className="my-3">City name:</h5>
       <div className="input-group">
         <input
           onChange={cityOnChange}

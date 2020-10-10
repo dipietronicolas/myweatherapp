@@ -38,7 +38,7 @@ export class Container extends React.Component {
 
   render() {
     return (
-      <div className="container col-md-10 mx-auto my-3 px-auto" id='contenedor'>
+      <div className="container col-12 col-md-10 mx-auto my-3 px-auto" id='contenedor'>
         <div className="row my-3 mx-auto px-auto">
           {
 

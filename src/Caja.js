@@ -1,6 +1,6 @@
 import React from 'react';
 import './Caja.css';
-
+import { API_KEY } from './ApiKey';
 export default class Caja extends React.Component {
 
   state = {
@@ -17,7 +17,8 @@ export default class Caja extends React.Component {
 
   fetchWeatherData() {
     console.log("fetchWeatherData");
-    const weather_url = `https://api.openweathermap.org/data/2.5/weather?id=${this.state.id}&units=metric&appid=0eb99e84e2190cad3c7ba40bd3290167`
+    console.log(API_KEY);
+    const weather_url = `https://api.openweathermap.org/data/2.5/weather?id=${this.state.id}&units=metric&appid=${API_KEY}`
     fetch(weather_url)
       .then(response => response.json())
       .then(data => {

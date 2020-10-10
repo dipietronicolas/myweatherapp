@@ -33,10 +33,10 @@ export class Buscador extends React.Component {
       this.props.fetchCityData(code);
     })
   }
-
+/*<div className="container col-sm-10 col-md-8 col-lg-6 mr-auto ml-0 mt-3" id="buscador">*/
   render() {
     return (
-      <div className="container col-sm-10 col-md-8 col-lg-6 mt-3" id="buscador">
+      <div className="container col-12 col-md-10 col-lg-9 col-xl-7 mx-auto ml-0 mt-3" id="buscador">
         <h1>myWeather App.</h1>
 
         <div className="row my-3">

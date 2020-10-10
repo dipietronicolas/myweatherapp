@@ -1,4 +1,5 @@
 import React from 'react';
+import { Description } from './Description';
 import { Container } from './Container';
 import { Buscador } from './Buscador/Buscador';
 import './App.css';
@@ -16,9 +17,9 @@ class App extends React.Component {
     this.setState({
       city_code: city_code,
       show_container: true
-    }, () =>{
+    }, () => {
       this.boxIncrease();
-      
+
     })
   }
 
@@ -50,18 +51,26 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="container-fluid">
-          <Buscador
-            user={this.props.user}
-            increase_button={this.boxIncrease}
-            fetchCityData={this.fetchCityData} />
           
-         {this.state.show_container
-          ? <Container
-              boxes={this.state.boxes_created}
-              amount={this.state.box_amount}
-              remove={this.removeBoxes} />
-          : ''
-          }
+            <div className="col-11 col-sm-7 col-lg-6 mx-auto mt-3">
+              <Description />
+            </div>
+            <div className="col-12 col-xl-10 mx-auto">
+              <Buscador
+                user={this.props.user}
+                increase_button={this.boxIncrease}
+                fetchCityData={this.fetchCityData} />
+              {this.state.show_container
+                ? <Container
+                  boxes={this.state.boxes_created}
+                  amount={this.state.box_amount}
+                  remove={this.removeBoxes} />
+                : ''
+              }
+
+            </div>
+          
+
         </div>
       </div>
     )
