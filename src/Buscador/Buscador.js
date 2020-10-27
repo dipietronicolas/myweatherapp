@@ -13,6 +13,21 @@ export class Buscador extends React.Component {
     show_city_search: false
   }
 
+  componentDidMount(){
+    const separacion = document.querySelector('#separacion');
+    const setScreen = () => {
+      if(window.innerWidth < 577){
+        separacion.className = "my-5";
+      } else {
+        separacion.className = "my-5 d-none";
+      }
+    }
+    setScreen();
+    window.onresize = () => {
+      setScreen();
+    }
+  }
+
   toggleFalseShowCitySearch = () => {
     this.setState({
       show_city_search: false
@@ -49,7 +64,7 @@ export class Buscador extends React.Component {
               ? <BuscadorCiudades
                 country_code={this.state.country_code}
                 cityCode={this.setCityCode} />
-              : ''
+              : <div className="my-5 d-none" id="separacion"><br /><br /><br /><br /></div>
           }
           
         </div>

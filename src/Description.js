@@ -6,7 +6,7 @@ export class Description extends React.Component {
     return (
       <div className="card">
         <a className="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          <h4>Project description</h4>
+          <h4>Click here for a project description</h4>
         </a>
         <div className="collapse" id="collapseExample">
           <div className='card-body'>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Description } from './Description';
 import { Container } from './Container';
 import { Buscador } from './Buscador/Buscador';
+import axios from 'axios';
 import './App.css';
 
 class App extends React.Component {
@@ -12,18 +13,48 @@ class App extends React.Component {
     city_code: '',
     show_container: false
   }
+
+  componentDidMount() {
+    fetch('/api/')
+      .then(res => res.json())
+      .then(array => this.setState({
+        box_amount: array,
+        show_container: true
+      }))
+  }
+
+  saveToDatabase = (id) => {
+    axios.post('/api/', id)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  removeFromDatabase = (id) => {
+   axios.delete(`/api/${id}`, { id:id })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   /* [3433955, 3432043, 3430863] bsas la plata mardel */
   fetchCityData = (city_code) => {
-    if(this.state.box_amount.indexOf(city_code) === -1){
+    if (this.state.box_amount.indexOf(city_code) === -1) {
       this.setState({
         city_code: city_code,
         show_container: true
       }, () => {
         this.boxIncrease();
-  
+
       })
     }
-    
+
   }
 
   boxIncrease = () => {
@@ -31,6 +62,7 @@ class App extends React.Component {
     let id = this.state.city_code;
     let array_aux = this.state.box_amount;
     array_aux.push(id);
+    this.saveToDatabase(id);
     this.setState({
       boxes_created: this.state.boxes_created + 1,
       box_amount: array_aux
@@ -43,6 +75,7 @@ class App extends React.Component {
       return elemento !== id;
     })
     boxes_created_aux -= 1;
+    this.removeFromDatabase(id);
     this.setState({
       boxes_created: boxes_created_aux,
       box_amount: array_aux
@@ -54,25 +87,25 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="container-fluid">
-          
-            <div className="col-11 col-sm-7 col-lg-6 mx-auto mt-3">
-              <Description />
-            </div>
-            <div className="col-12 col-xl-10 mx-auto">
-              <Buscador
-                user={this.props.user}
-                increase_button={this.boxIncrease}
-                fetchCityData={this.fetchCityData} />
-              {this.state.show_container
-                ? <Container
-                  boxes={this.state.boxes_created}
-                  amount={this.state.box_amount}
-                  remove={this.removeBoxes} />
-                : ''
-              }
 
-            </div>
-          
+          <div className="col-11 col-sm-9 col-lg-6 mx-auto mt-3">
+            <Description />
+          </div>
+          <div className="col-12 col-xl-10 mx-auto">
+            <Buscador
+              user={this.props.user}
+              increase_button={this.boxIncrease}
+              fetchCityData={this.fetchCityData} />
+            {this.state.show_container
+              ? <Container
+                boxes={this.state.boxes_created}
+                amount={this.state.box_amount}
+                remove={this.removeBoxes} />
+              : ''
+            }
+
+          </div>
+
 
         </div>
       </div>

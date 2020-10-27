@@ -65,7 +65,7 @@ export const BuscadorCiudades = (props) => {
 
 
   return (
-    <div className="col-6 col-md-6" id='search_city_form' >
+    <div className="col-12 col-sm-6" id='search_city_form' >
       <h5 className="my-3">City name:</h5>
       <div className="input-group">
         <input
@@ -75,7 +75,8 @@ export const BuscadorCiudades = (props) => {
           type="text"
           className="form-control"
           id="search_city_keyword"
-          placeholder="Ej: Buenos Aires" />
+          placeholder="Ej: Buenos Aires"
+          autoFocus />
         <div className="input-group-append">
         </div>
       </div>

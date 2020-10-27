@@ -54,7 +54,7 @@ export const BuscadorPaises = (props) => {
   }
 
   return (
-    <div className="col-6 col-md-6">
+    <div className="col-12 col-sm-6">
       <h5 className="my-3">Country name:</h5>
       <div className="input-group">
 
